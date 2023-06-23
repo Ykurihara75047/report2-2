@@ -56,6 +56,8 @@
           new THREE.MeshLambertMaterial({map:THREE.ImageUtils.loadTexture("img_bb.png")}),
         ];
 
+        var material = new THREE.MeshFaceMaterial(materials); // マテリアルをセット
+
         var geometry = new THREE.BoxGeometry(1, 2, 0.5);
         var building1 = new THREE.Mesh(geometry, materials);
         var building2 = new THREE.Mesh(geometry, materials);
@@ -64,8 +66,8 @@
         building1.position.x = 1.5;
         building2.position.x = -1.5;
 
-        scene.add(building1);
-        scene.add(building2);
+        all.add(building1);
+        all.add(building2);
 
         // 毎フレーム時に実行されるループイベント
         function update() {
