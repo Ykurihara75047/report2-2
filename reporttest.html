@@ -5,8 +5,7 @@
     <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
   </head>
 <body>
- <h1>森を作成</h1>
- ループで２０本の気を作った<br>
+ <h1>ビルを作成</h1>
  <script>
       // ページの読み込みを待つ
       window.addEventListener('DOMContentLoaded', init);
@@ -58,7 +57,7 @@
         const material = new THREE.SpriteMaterial({ map: texture,});
 
         // 森を作成
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 15; i++) {
           const sprite = new THREE.Sprite(material);
           // ランダムな座標に配置
           sprite.position.x = 2 * (Math.random() - 0.5);
