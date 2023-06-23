@@ -55,14 +55,14 @@
           new THREE.SpriteMaterial({ map: textureLoader.load('img/img_bsr.png') }),
         ];
 
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 2; i++) {
           const building = createBuilding(materials);
           // ランダムな座標に配置
           building.position.x = 2 * (Math.random() - 0.5);
           building.position.y = 0.5 * Math.random();
           building.position.z = 2 * (Math.random() - 0.5);
           // スケールを調整
-          building.scale.set(2, 2, 2);
+          building.scale.set(1, 1, 1);
 
           scene.add(building);
         }
