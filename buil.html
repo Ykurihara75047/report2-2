@@ -46,38 +46,64 @@
         // シーンに追加
         scene.add(directionalLight2);
 
-        // helper
-        const gridHelper = new THREE.GridHelper(2, 10); // size, step
-        scene.add(gridHelper);
-        const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
-        scene.add(axisHelper);
-
         // ビルを作成
         const textureLoader = new THREE.TextureLoader();
-        const material = new THREE.SpriteMaterial({
-          map: textureLoader.load('img/img_bsl.png'),
-        });
+        const materials = [
+          new THREE.SpriteMaterial({ map: textureLoader.load('img/img_bf_b.png') }),
+          new THREE.SpriteMaterial({ map: textureLoader.load('img/img_bs_b.png') }),
+          new THREE.SpriteMaterial({ map: textureLoader.load('img/img_bsl.png') }),
+          new THREE.SpriteMaterial({ map: textureLoader.load('img/img_bsr.png') }),
+        ];
 
         for (let i = 0; i < 15; i++) {
-          const sprite = createBuilding(material);
+          const building = createBuilding(materials);
           // ランダムな座標に配置
-          sprite.position.x = 2 * (Math.random() - 0.5);
-          sprite.position.y = 0.5 * Math.random();
-          sprite.position.z = 2 * (Math.random() - 0.5);
+          building.position.x = 2 * (Math.random() - 0.5);
+          building.position.y = 0.5 * Math.random();
+          building.position.z = 2 * (Math.random() - 0.5);
           // スケールを調整
-          sprite.scale.set(2, 2, 2);
+          building.scale.set(2, 2, 2);
 
-          scene.add(sprite);
+          scene.add(building);
         }
 
         update();
 
-        // ビルボードを作成する関数
-        function createBuilding(material) {
-          const sprite = new THREE.Sprite(material);
-          sprite.center.set(0.5, 0); // ビルボードの中心を設定
+        // ビルを作成する関数
+        function createBuilding(materials) {
+          const group = new THREE.Group();
 
-          return sprite;
+          // 前面
+          const front = new THREE.Sprite(materials[0]);
+          front.center.set(0.5, 0);
+          group.add(front);
+
+          // 側面（左）
+          const sideLeft = new THREE.Sprite(materials[1]);
+          sideLeft.center.set(0.5, 0);
+          sideLeft.rotation.y = Math.PI / 2;
+          group.add(sideLeft);
+
+          // 側面（右）
+          const sideRight = new THREE.Sprite(materials[1]);
+          sideRight.center.set(0.5, 0);
+          sideRight.rotation.y = -Math.PI / 2;
+          group.add(sideRight);
+
+          // 背面
+          const back = new THREE.Sprite(materials[2]);
+          back.center.set(0.5, 0);
+          back.rotation.y = Math.PI;
+          group.add(back);
+
+          // 上面
+          const top = new THREE.Sprite(materials[3]);
+          top.center.set(0.5, 0);
+          top.position.y = 1;
+          top.rotation.x = -Math.PI / 2;
+          group.add(top);
+
+          return group;
         }
 
         // 毎フレーム時に実行されるループイベント
