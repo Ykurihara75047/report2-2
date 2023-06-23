@@ -58,7 +58,7 @@
         for (let i = 0; i < 2; i++) {
           const building = createBuilding(materials);
           // ランダムな座標に配置
-          building.position.x = 2 * (Math.random() - 0.5);
+          building.position.x = i * 4 - 2; // 横に並ぶように座標を調整
           building.position.y = 0.5 * Math.random();
           building.position.z = 2 * (Math.random() - 0.5);
           // スケールを調整
@@ -102,6 +102,13 @@
           top.position.y = 1;
           top.rotation.x = -Math.PI / 2;
           group.add(top);
+
+          // 下面
+          const bottom = new THREE.Sprite(materials[3]);
+          bottom.center.set(0.5, 0);
+          bottom.position.y = -1;
+          bottom.rotation.x = Math.PI / 2;
+          group.add(bottom);
 
           return group;
         }
