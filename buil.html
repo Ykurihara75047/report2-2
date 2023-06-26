@@ -47,20 +47,21 @@
         scene.add(directionalLight2);
 
         // 平面を作成
-        var planeGeometry = new THREE.PlaneGeometry(5,5,5,5);
-        var planeMaterial = new THREE.MeshBasicMaterial({color: 0x734e30});
-        var plane = new THREE.Mesh(planeGeometry,planeMaterial);
-        plane.rotation.set( -Math.PI/2, 0, 0 );
-        plane.position.set(0,0,0);
+        var planeGeometry = new THREE.PlaneGeometry(5, 5, 5, 5);
+        var planeMaterial = new THREE.MeshBasicMaterial({ color: 0x734e30 });
+        var plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.rotation.set(-Math.PI / 2, 0, 0);
+        plane.position.set(0, 0, 0);
+        scene.add(plane);
 
         // ビルを作成
         var materials = [
-          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bsl.png") }),
-          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bsr.png") }),
-          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img3.png") }),
-          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img4.png") }),
-          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bf.png") }),
-          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bb.png") }),
+          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img_bsl.png") }),
+          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img_bsr.png") }),
+          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img3.png") }),
+          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img4.png") }),
+          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img_bf.png") }),
+          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img_bb.png") }),
         ];
 
         var material = new THREE.MeshFaceMaterial(materials);
