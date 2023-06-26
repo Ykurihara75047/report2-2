@@ -41,11 +41,11 @@
         scene.add(directionalLight2);
 
         // 平面を作成
-        var planeGeometry = new THREE.PlaneGeometry(10, 10, 10, 10);
+        var planeGeometry = new THREE.PlaneGeometry(5, 5, 5, 5);
         var planeMaterial = new THREE.MeshBasicMaterial({ color: 0x734e30 });
         var plane = new THREE.Mesh(planeGeometry, planeMaterial);
         plane.rotation.set(-Math.PI / 2, 0, 0);
-        plane.position.set(0, 0, 0);
+        plane.position.set(0, -0.5, 0);
         scene.add(plane);
 
         // ビルを作成
