@@ -69,10 +69,20 @@
 
         // レンダリングを更新する関数
         function update() {
-          // レンダリング
-          renderer.render(scene, camera);
-          requestAnimationFrame(update);
-        }
+  // カメラの位置と向きを取得
+  const cameraPosition = camera.position;
+  const cameraQuaternion = camera.quaternion;
+
+  // ビルボードの位置をカメラの位置に合わせる
+  group.position.copy(cameraPosition);
+
+  // ビルボードの回転をカメラの向きに合わせる
+  group.quaternion.copy(cameraQuaternion);
+
+  // レンダリング
+  renderer.render(scene, camera);
+  requestAnimationFrame(update);
+}
         update();
       }
     </script>
