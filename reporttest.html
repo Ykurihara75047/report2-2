@@ -5,9 +5,7 @@
     <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
   </head>
 <body>
- <h1>板ポリにテクスチャを貼ってみた</h1>
- 板ポリにテクスチャを貼ってみた<br>
- 非透過と透過
+ <h1>ブロックにマッピングとビルボードを適用</h1>
  <script>
       // ページの読み込みを待つ
       window.addEventListener('DOMContentLoaded', init);
@@ -55,7 +53,7 @@
 
         // テクスチャを読み込む
         var textureLoader = new THREE.TextureLoader();
-        textureLoader.load("img/block.png", function (texture) {
+        textureLoader.load("img/block2.png", function (texture) {
           // マテリアルを作成
           const material = new THREE.SpriteMaterial({ map: texture });
 
