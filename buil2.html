@@ -52,6 +52,17 @@
 
         // テクスチャを読み込む
         var textureLoader = new THREE.TextureLoader();
+        textureLoader.load("img/block2.png", function (texture) {
+          // マテリアルを作成
+          const material = new THREE.SpriteMaterial({ map: texture });
+
+          // 中央にビルボード
+          const sprite1 = new THREE.Sprite(material);
+          sprite1.scale.set(1, 2, 1);
+          sprite1.position.set(-1, 1, 0); //位置を指定
+          scene.add(sprite1);
+          update();
+        });
         var materials = [
           new THREE.MeshBasicMaterial({
             map: textureLoader.load("img/img_bsl.png"),
