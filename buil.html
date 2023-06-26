@@ -49,28 +49,22 @@
 
         // ビルを作成
         var materials = [
-          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img_bsl.png") }),
-          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img_bsr.png") }),
-          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img3.png") }),
-          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img4.png") }),
-          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img_bf.png") }),
-          new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load("img/img_bb.png") }),
+          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bsl.png") }),
+          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bsr.png") }),
+          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img3.png") }),
+          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img4.png") }),
+          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bf.png") }),
+          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bb.png") }),
         ];
-
         var material = new THREE.MeshFaceMaterial(materials);
-
         var geometry = new THREE.BoxGeometry(1, 2, 0.5);
         var building1 = new THREE.Mesh(geometry, material);
         var building2 = new THREE.Mesh(geometry, material);
-
         // 指定した位置にビルを配置
         building1.position.set(1.5, 0, 0);
         building2.position.set(-1.5, 0, 0);
-
-        // シーンにビルを追加
         scene.add(building1);
         scene.add(building2);
-
         // レンダリングを更新する関数
         function update() {
           // レンダリング
