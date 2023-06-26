@@ -49,17 +49,22 @@
 
         // ビルを作成
         var materials = [
+          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bsl.png") }),
+          new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bsr.png") }),
           new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bf_b.png") }),
           new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bs_b.png") }),
+        ];
+        var materials2 = [
           new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bsl.png") }),
           new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bsr.png") }),
           new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bf_b.png") }),
           new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture("img/img_bs_b.png") }),
         ];
         var material = new THREE.MeshFaceMaterial(materials);
+        var material = new THREE.MeshFaceMaterial(materials2);
         var geometry = new THREE.BoxGeometry(1, 2, 0.5);
         var building1 = new THREE.Mesh(geometry, material);
-        var building2 = new THREE.Mesh(geometry, material);
+        var building2 = new THREE.Mesh(geometry, material2);
         // 指定した位置にビルを配置
         building1.position.set(1.5, 0, 0);
         building2.position.set(-1.5, 0, 0);
