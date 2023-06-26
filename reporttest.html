@@ -34,7 +34,7 @@
         camera.position.set(0, 0, 5);
 
         // カメラコントローラーを作成
-        const controls = new THREE.OrbitControls(camera, renderer.domElement); 
+        const controls = new THREE.OrbitControls(camera, document.body); 
         
         // 平行光源1
         var directionalLight1 = new THREE.DirectionalLight(0xffffff);
@@ -53,23 +53,23 @@
         const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
         scene.add(axisHelper);
 
-        // 木を作成
+        // 木をスプライトで作成
         var textureLoader = new THREE.TextureLoader();  
-        var texture = textureLoader.load("img/star.png");
+        var texture = textureLoader.load("img/tree0.png");
+        const material = new THREE.SpriteMaterial({ map: texture,});
 
-        // 板ポリのジオメトリを作成
-        const geometry = new THREE.PlaneGeometry(2, 4); // 幅、高さ
+        // 木左
+        const sprite1 = new THREE.Sprite(material);
+        sprite1.scale.set(1,2,1);
+        sprite1.position.set(-1,1,0); //位置を指定
+        scene.add(sprite1);
 
-        // マテリアルを作成
-        const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true });
-
-        // 板ポリのメッシュを作成
-        const plane = new THREE.Mesh(geometry, material);
-        scene.add(plane);
-
-        // ビルボード化
-        plane.quaternion.copy(camera.quaternion);
-
+        // 木右
+        const sprite2 = new THREE.Sprite(material);
+        sprite2.scale.set(1,2,1);
+        sprite2.position.set(1,1,0); //位置を指定
+        scene.add(sprite2);
+        
         update();
 
         // 毎フレーム時に実行されるループイベントです
@@ -81,4 +81,3 @@
       }
     </script>
 </body>
-</html>
